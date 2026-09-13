@@ -136,10 +136,12 @@
             display: flex !important;
             flex-direction: row;
             gap: 10px;
-            color: black;
 
             svg {
                 font-size: 1.8em;
+            }
+            a {
+                color: black;
             }
         }
 
