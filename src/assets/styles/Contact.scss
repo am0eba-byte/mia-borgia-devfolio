@@ -32,10 +32,10 @@ label {
   display: flex;
   gap: 15px;
   padding-bottom: 15px;
-}
 
-.form-flex .MuiFormControl-root {
-  width: 100%;
+  .MuiFormControl-root {
+    width: 100%;
+  }
 }
 
 form {
