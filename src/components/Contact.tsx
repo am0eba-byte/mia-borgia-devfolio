@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import '../assets/styles/Contact.scss';
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
@@ -36,10 +36,10 @@ function Contact() {
 
     //   console.log(templateParams);
     //   emailjs.send('service_id', 'template_id', templateParams, 'api_key').then(
-    //     (response) => {
+    //     (response: any) => {
     //       console.log('SUCCESS!', response.status, response.text);
     //     },
-    //     (error) => {
+    //     (error: any) => {
     //       console.log('FAILED...', error);
     //     },
     //   );
@@ -54,7 +54,6 @@ function Contact() {
       <div className="items-container">
         <div className="contact_wrapper">
           <h1>Contact Me</h1>
-          <p>Got a project waiting to be realized? Let's collaborate and make it happen!</p>
           <Box
             ref={form}
             component="form"
