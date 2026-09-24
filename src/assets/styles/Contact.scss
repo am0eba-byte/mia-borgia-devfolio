@@ -18,8 +18,17 @@
     color: white;
   }
 
-  fieldset {
+  // MUI renders the notched outline as an absolutely positioned <fieldset> *after* the
+  // input, so a background on it paints over the text being typed. The white field
+  // surface belongs on the input root instead.
+  .MuiOutlinedInput-root {
     background-color: white;
+  }
+
+  // index.scss colors every label white for dark mode, which is correct once the label
+  // floats above the field, but invisible while it rests on the white surface.
+  .MuiInputLabel-root:not(.MuiInputLabel-shrink) {
+    color: #050f0b;
   }
 }
 
@@ -45,4 +54,18 @@ form {
 .body-form {
   width: 100% !important;
   margin-bottom: 15px !important;
+}
+
+// Honeypot field for spam bots: kept in the DOM (unlike display:none, which some bots skip)
+// but positioned off-screen and hidden from assistive tech.
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
