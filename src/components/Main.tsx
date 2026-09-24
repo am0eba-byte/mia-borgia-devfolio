@@ -1,6 +1,7 @@
 import React from "react";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import '../assets/styles/Main.scss';
 import avatarImage from '../assets/images/me-circle.png';
 
@@ -16,6 +17,7 @@ function Main() {
           <div className="social_icons">
             <a href="https://github.com/am0eba-byte" target="_blank" rel="noreferrer"><GitHubIcon/></a>
             <a href="https://www.linkedin.com/in/mia-borgia" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+            <a href="https://www.youtube.com/@mia-bo-bia" target="_blank" rel="noreferrer"><YouTubeIcon/></a>
           </div>
           <h1>Mia Borgia</h1>
           <p>Full Stack Engineer</p>
@@ -23,6 +25,7 @@ function Main() {
           <div className="mobile_social_icons">
             <a href="https://github.com/am0eba-byte" target="_blank" rel="noreferrer"><GitHubIcon/></a>
             <a href="https://www.linkedin.com/in/mia-borgia" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+            <a href="https://www.youtube.com/@mia-bo-bia" target="_blank" rel="noreferrer"><YouTubeIcon/></a>
           </div>
         </div>
       </div>
