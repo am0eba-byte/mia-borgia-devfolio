@@ -20,7 +20,7 @@ function Main() {
             <a href="https://www.youtube.com/@mia-bo-bia" target="_blank" rel="noreferrer"><YouTubeIcon/></a>
           </div>
           <h1>Mia Borgia</h1>
-          <p>Full Stack Engineer</p>
+          <p>Full Stack Software Engineer</p>
 
           <div className="mobile_social_icons">
             <a href="https://github.com/am0eba-byte" target="_blank" rel="noreferrer"><GitHubIcon/></a>

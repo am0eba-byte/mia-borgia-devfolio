@@ -6,6 +6,7 @@ import mayans from '../assets/images/project-screenshots/academic/mayans.jpg';
 import prtutorial from '../assets/images/project-screenshots/academic/pull-requests.png';
 import svgtutorial from '../assets/images/project-screenshots/academic/SVGanim.png';
 import threejsblog from '../assets/images/project-screenshots/academic/threeJSblog.jpg';
+import threejstutorial from '../assets/images/project-screenshots/academic/threeJS.png';
 import artshow from '../assets/images/project-screenshots/internships/art_show.jpg';
 import boldc from '../assets/images/project-screenshots/internships/boldC-site.jpg';
 import digit from '../assets/images/project-screenshots/internships/digit-site.jpg';
@@ -79,15 +80,20 @@ function Project() {
                 <p>A walkthrough tutorial on SVG animation, written for 100-level DIGIT students.</p>
             </div>
             <div className="project">
+                <a href="https://newtfire.github.io/newTutorials/threeJS/threeJS.html" target="_blank" rel="noreferrer"><img src={threejstutorial} className="zoom" alt="thumbnail" width="100%"/></a>
+                <a href="https://newtfire.github.io/newTutorials/threeJS/threeJS.html" target="_blank" rel="noreferrer"><h2>Getting Started with Three.JS</h2></a>
+                <p>A tutorial introducing <a className="para-link" href="https://threejs.org/">Three.JS</a> and 3D rendering on the web, written for 100- and 200-level DIGIT students.</p>
+            </div>
+            <div className="project">
                 <a href="https://am0eba-byte.github.io/internshipblog-3js/" target="_blank" rel="noreferrer"><img src={threejsblog} className="zoom" alt="thumbnail" width="100%"/></a>
                 <a href="https://am0eba-byte.github.io/internshipblog-3js/" target="_blank" rel="noreferrer"><h2>Three.JS Internship Blog</h2></a>
                 <p>Developed using Node.js and a nifty library called <a className="para-link" href="https://threejs.org/">Three.JS</a>, which made it possible to create a 3D environment from scratch using just vanilla JavaScript, HTML, and CSS. This blog documented my first few months working as a Software Development Intern at Larson Texts, Inc.</p>
             </div>
-            <div className="project">
+            {/* <div className="project">
                 <img src={dataviz} className="zoom" alt="thumbnail" width="100%"/>
                 <h2>Median Earnings by Education Level and Sex</h2>
                 <p>A data visualization exploring median earnings by education level and sex, created using R and Tableau.</p>
-            </div>
+            </div> */}
             <div className="project">
                 <iframe src="https://slides.com/elisabeshero-bondar/langston-hughes-and-the-blues-text-archiving-analysis-and-black-dh-for-undergraduates/embed" className="slides-embed" title="Langston Hughes and The Blues: Text Archiving, Analysis, and Black DH for Undergraduates" loading="lazy" allowFullScreen></iframe>
                 <a href="https://slides.com/elisabeshero-bondar/langston-hughes-and-the-blues-text-archiving-analysis-and-black-dh-for-undergraduates" target="_blank" rel="noreferrer"><h2>Keystone DH Conference 2021 Presentation Slides</h2></a>
