@@ -25,17 +25,17 @@ function Project() {
                 <a href="https://digit-psb.github.io/student-art-show/index.html" target="_blank" rel="noreferrer"><h2>Student Art Show Website</h2></a>
                 <p>Independently led the design and development of the website for Penn State Behrend's Spring Student Art Show - written in pure HTML & CSS, andhosted with GitHub Pages.</p>
             </div>
-            <div className="project">
+            {/* <div className="project">
                 <a href="https://digit-psb.github.io/BOLDC/" target="_blank" rel="noreferrer"><img src={boldc} className="zoom" alt="thumbnail" width="100%"/></a>
                 <a href="https://digit-psb.github.io/BOLDC/" target="_blank" rel="noreferrer"><h2>BOLD-C Website</h2></a>
                 <p>Designed and built the website for the Behrend Open Lab of Digital Cinema (BOLD-C), hosted with GitHub Pages.</p>
-            </div>
+            </div> */}
             <div className="project">
                 <a href="https://digit-psb.github.io/DIGIT/" target="_blank" rel="noreferrer"><img src={digit} className="zoom" alt="thumbnail" width="100%"/></a>
                 <a href="https://digit-psb.github.io/DIGIT/" target="_blank" rel="noreferrer"><h2>DIGIT Website</h2></a>
                 <p>Led the initial design and development of the official website for Penn State Behrend's Digital Media, Arts, and Technology program - written in pure HTML & CSS, andhosted with GitHub Pages.</p>
             </div>
-            <div className="project">
+            {/* <div className="project">
                 <a href="https://sites.psu.edu/wintergreengorge/" target="_blank" rel="noreferrer"><img src={gorge} className="zoom" alt="thumbnail" width="100%"/></a>
                 <a href="https://sites.psu.edu/wintergreengorge/" target="_blank" rel="noreferrer"><h2>Wintergreen Gorge Website</h2></a>
                 <p>Designed and built a WordPress website for the Wintergreen Gorge site.</p>
@@ -49,7 +49,7 @@ function Project() {
                 <a href="https://sites.psu.edu/onegarden/" target="_blank" rel="noreferrer"><img src={onegarden} className="zoom" alt="thumbnail" width="100%"/></a>
                 <a href="https://sites.psu.edu/onegarden/" target="_blank" rel="noreferrer"><h2>One Garden Website</h2></a>
                 <p>Designed and built a WordPress website for the One Garden project.</p>
-            </div>
+            </div> */}
         </div>
         <h2 className="projects-section-title">Academic Projects</h2>
         <div className="projects-grid">
@@ -89,8 +89,8 @@ function Project() {
                 <p>A data visualization exploring median earnings by education level and sex, created using R and Tableau.</p>
             </div>
             <div className="project">
-                <iframe src="https://slides.com/elisabeshero-bondar/langston-hughes-and-the-blues-text-archiving-analysis-and-black-dh-for-undergraduates/embed" width="576" height="420" title="Langston Hughes and The Blues: Text Archiving, Analysis, and Black DH for Undergraduates" scrolling="no" allowFullScreen></iframe>
-                <h2>Keystone DH Conference 2021 Presentation Slides</h2>
+                <iframe src="https://slides.com/elisabeshero-bondar/langston-hughes-and-the-blues-text-archiving-analysis-and-black-dh-for-undergraduates/embed" className="slides-embed" title="Langston Hughes and The Blues: Text Archiving, Analysis, and Black DH for Undergraduates" loading="lazy" allowFullScreen></iframe>
+                <a href="https://slides.com/elisabeshero-bondar/langston-hughes-and-the-blues-text-archiving-analysis-and-black-dh-for-undergraduates" target="_blank" rel="noreferrer"><h2>Keystone DH Conference 2021 Presentation Slides</h2></a>
                 <p>Slides from my presentation at the <a className="para-link" href="https://keystonedh.network/2021/">2021 Keystone Digital Humanities Conference</a>, where I presented my work on text-encoding and large-scale text analysis projects (<a className="para-link" href="https://am0eba-byte.github.io/BallotandMe/index.html">Ballot and Me</a>, and <a className="para-link" href="https://am0eba-byte.github.io/blues/">the Blues</a>) in Black Digital Humanities.</p>
             </div>
         </div>

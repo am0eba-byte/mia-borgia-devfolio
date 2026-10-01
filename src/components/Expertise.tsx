@@ -16,7 +16,6 @@ const labelsFrontend = [
     "SCSS",
     "Responsive Design",
     "Mobile-First Development",
-    "Storybook",
 ];
 
 const labelsBackend = [

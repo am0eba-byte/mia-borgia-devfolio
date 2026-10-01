@@ -9,7 +9,7 @@ import TextField from '@mui/material/TextField';
 
 const MESSAGE_MIN_LENGTH = 10;
 const MESSAGE_MAX_LENGTH = 2000;
-const SEND_COOLDOWN_MS = 30000;
+const SEND_THROTTLE_MS = 30000;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[0-9+\-\s()]{7,}$/;
@@ -42,19 +42,11 @@ function Contact() {
   const [status, setStatus] = useState<StatusMessage | null>(null);
 
   const form = useRef();
-  const lastSentAt = useRef<number>(0);
 
   const sendEmail = (e: any) => {
     e.preventDefault();
 
     if (isSending) {
-      return;
-    }
-
-    const msSinceLastSend = Date.now() - lastSentAt.current;
-    if (lastSentAt.current !== 0 && msSinceLastSend < SEND_COOLDOWN_MS) {
-      const secondsLeft = Math.ceil((SEND_COOLDOWN_MS - msSinceLastSend) / 1000);
-      setStatus({ severity: 'info', text: `Please wait ${secondsLeft}s before sending another message.` });
       return;
     }
 
@@ -87,7 +79,6 @@ function Contact() {
     // Bot caught in the honeypot: pretend it worked so scrapers don't learn to avoid the trap,
     // but never actually call EmailJS (and don't burn the monthly send quota on spam).
     if (company.trim() !== '') {
-      lastSentAt.current = Date.now();
       setName('');
       setEmail('');
       setMessage('');
@@ -115,9 +106,15 @@ function Contact() {
     setStatus(null);
 
     emailjs
-      .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
+      .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, {
+        publicKey: EMAILJS_PUBLIC_KEY,
+        blockHeadless: true,
+        // Throttle is persisted to localStorage by the SDK, so it survives a page reload.
+        // The explicit id matters: the default key is location.pathname, which differs
+        // between `npm start` (/) and GitHub Pages (/react-portfolio-template/).
+        limitRate: { id: 'contact_form', throttle: SEND_THROTTLE_MS },
+      })
       .then(() => {
-        lastSentAt.current = Date.now();
         setStatus({ severity: 'success', text: 'Thanks! Your message has been sent.' });
         setName('');
         setEmail('');
@@ -125,6 +122,15 @@ function Contact() {
       })
       .catch((error: any) => {
         console.error('Failed to send message', error);
+        // The SDK rejects with an EmailJSResponseStatus ({ status, text }) for its own
+        // checks, but throws plain strings for bad params — hence the optional access.
+        if (error?.status === 429) {
+          setStatus({
+            severity: 'info',
+            text: "You've just sent a message — please wait a moment before sending another.",
+          });
+          return;
+        }
         setStatus({ severity: 'error', text: 'Something went wrong sending your message. Please try again later.' });
       })
       .finally(() => {
@@ -160,7 +166,7 @@ function Contact() {
               <TextField
                 required
                 id="outlined-required-email"
-                label="Email"
+                label="Email / Phone Number"
                 placeholder="How can I reach you?"
                 value={email}
                 onChange={(e) => {

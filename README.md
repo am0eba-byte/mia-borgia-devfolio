@@ -50,7 +50,7 @@ The Contact form sends messages using [EmailJS](https://www.emailjs.com/), which
 
 4. **Get your Public Key** from Account -> General. This key is designed to be embedded in client-side code (it is not a secret), but you should still restrict where it can be used:
 
-5. **Restrict allowed domains** under Account -> Security to your site's real domain (e.g. `https://yourusername.github.io`) so nobody else can embed your public key on another site and send mail through your account.
+5. **Restrict allowed domains** under Account -> Security to your site's real domain (e.g. `https://yourusername.github.io`). Don't skip this — it's the only safeguard that stops someone POSTing directly to EmailJS's API with the keys from your JS bundle. Everything else below runs in the visitor's browser and can be bypassed.
 
 6. **Configure environment variables locally.** Copy `.env.example` to `.env.local` and fill in the three values from steps 2-4:
 
@@ -66,7 +66,16 @@ The Contact form sends messages using [EmailJS](https://www.emailjs.com/), which
 
     `.env.local` is gitignored and is read automatically by `npm start` and `npm run build`. Since `npm run deploy` builds locally before pushing to GitHub Pages (there's no CI pipeline), this file just needs to exist on whichever machine runs `npm run deploy`.
 
-The form also includes baseline anti-spam protection: a hidden honeypot field, a client-side send cooldown, and input validation — see [Contact.tsx](src/components/Contact.tsx). EmailJS's free tier caps out at 200 emails/month, so these safeguards help avoid burning through that quota on spam.
+### Anti-spam measures
+
+EmailJS's free tier caps out at 200 emails/month, so spam burns your quota as well as cluttering your inbox. [Contact.tsx](src/components/Contact.tsx) layers:
+
+- **Honeypot field** — a hidden input real visitors never see; if it's filled, the submission is dropped without calling EmailJS.
+- **Rate limiting** — the SDK's `limitRate` option, persisted to `localStorage`, so the throttle survives a page reload (rejects with status 429).
+- **Headless browser blocking** — the SDK's `blockHeadless` option rejects Puppeteer/Selenium-style automation (status 451).
+- **Input validation** — length bounds on the message plus an email/phone format check, so garbage submissions never reach the API.
+
+These stop commodity form-spam bots and accidental double-sends. They are not protection against a targeted attacker, since they all run client-side — the domain restriction in step 5 is what actually gates API access.
 
 ## Deployment
 
